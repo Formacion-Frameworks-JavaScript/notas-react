@@ -1,6 +1,7 @@
 const { Loading } = require("./componentes/Loading");
 
 function App() {
+  const cargando = false;
   return (
     <>
       <header className="navbar navbar-default">
@@ -293,7 +294,9 @@ function App() {
           </div>
         </div>
       </main>
-      <Loading />
+      {
+        cargando && <Loading />
+      }
     </>
   );
 }
