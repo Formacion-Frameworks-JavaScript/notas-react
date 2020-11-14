@@ -5,6 +5,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+if (module.hot) {
+  module.hot.accept() // already had this init code 
+
+  module.hot.addStatusHandler(status => {
+    if (status === 'prepare') console.clear()
+  })
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
