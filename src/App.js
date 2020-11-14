@@ -1,3 +1,5 @@
+const { Loading } = require("./componentes/Loading");
+
 function App() {
   return (
     <>
@@ -291,9 +293,7 @@ function App() {
           </div>
         </div>
       </main>
-      <div className="loading" hidden>
-        <img src="img/loading.svg" alt="cargando" />
-      </div>
+      <Loading />
     </>
   );
 }
