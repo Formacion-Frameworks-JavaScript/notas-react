@@ -28,9 +28,11 @@ function App() {
           </div>
         </div>
         <div className="row">
-          <Aula letra={letrasAulas[0]} />
-          <Aula letra={letrasAulas[1]} />
-          <Aula letra={letrasAulas[2]} />
+          {
+            letrasAulas.map(letraAula =>
+              <Aula letra={letraAula} key={letraAula} />
+            )
+          }
         </div>
       </main>
       {
