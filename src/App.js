@@ -16,6 +16,18 @@ function App() {
   const borraNota = nota => {
     setNotas(notas.filter(n => n !== nota));
   }
+  const modificaNota = (id, nota) => {
+    setNotas(notas.map(n => {
+      if (n.id === id) {
+        return {
+          ...n,
+          nota
+        }
+      } else {
+        return n;
+      }
+    }))
+  }
   useEffect(() => {
     setLetrasAulas(
       notas
@@ -42,6 +54,7 @@ function App() {
                 muestraFormulario={muestraFormulario}
                 onAbreFormulario={abreFormulario}
                 onBorraNota={borraNota}
+                onModificaNota={modificaNota}
               />
             )
           }

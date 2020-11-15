@@ -7,7 +7,8 @@ export const Aula = props => {
         notas,
         muestraFormulario,
         onAbreFormulario,
-        onBorraNota
+        onBorraNota,
+        onModificaNota
     } = props;
     return (
         <div className="col">
@@ -40,6 +41,7 @@ export const Aula = props => {
                                         key={alumno.id}
                                         alumno={alumno}
                                         onBorraNota={onBorraNota}
+                                        onModificaNota={onModificaNota}
                                     />
                                 )
                             }
