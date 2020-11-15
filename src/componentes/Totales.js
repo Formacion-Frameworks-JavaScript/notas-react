@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Estadistica } from "./Estadistica";
 
 export const Totales = props => {
     const { notas } = props;
@@ -10,7 +11,6 @@ export const Totales = props => {
         nSuspensos: 0,
         pSuspensos: 0
     });
-    const clasesIconos = n => `fa-${n >= 5 ? "smile" : "frown"} icono-${n >= 5 ? "ok" : "no-ok"}`;
     useEffect(() => {
         const media = notas.reduce((acc, nota) => acc + nota.nota, 0) / notas.length;
         const maxima = notas.reduce((acc, nota) => nota.nota > acc ? nota.nota : acc, 0);
@@ -24,32 +24,18 @@ export const Totales = props => {
         <div className="card-footer totales">
             <div className="row">
                 <div className="col">
-                    <div className="card">
-                        <div className="card-header">Nota media</div>
-                        <div className="card-body numbers">{totales.media.toFixed(2)}</div>
-                        <i className={`fa icono-status ${clasesIconos(totales.media)}`}></i>
-                    </div>
+                    <Estadistica titulo="Nota media" dato={totales.media} conIcono truncado />
                 </div>
                 <div className="col">
-                    <div className="card">
-                        <div className="card-header">Máxima nota</div>
-                        <div className="card-body numbers">{totales.maxima}</div>
-                        <i className={`fa icono-status ${clasesIconos(totales.maxima)}`}></i>
-                    </div>
+                    <Estadistica titulo="Máxima nota" dato={totales.maxima} conIcono />
                 </div>
             </div>
             <div className="row">
                 <div className="col">
-                    <div className="card">
-                        <div className="card-header">Aprobados</div>
-                        <div className="card-body numbers">{totales.nAprobados} ({totales.pAprobados.toFixed(2)}%)</div>
-                    </div>
+                    <Estadistica titulo="Aprobados" dato={totales.nAprobados} porcentaje={totales.pAprobados} />
                 </div>
                 <div className="col">
-                    <div className="card">
-                        <div className="card-header">Suspensos</div>
-                        <div className="card-body numbers">{totales.nSuspensos} ({totales.pSuspensos.toFixed(2)}%)</div>
-                    </div>
+                    <Estadistica titulo="Suspensos" dato={totales.nSuspensos} porcentaje={totales.pSuspensos} />
                 </div>
             </div>
         </div>
