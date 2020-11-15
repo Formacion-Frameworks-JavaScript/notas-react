@@ -1,4 +1,15 @@
+import { useEffect, useState } from "react";
+import almacenNotas from "../datos/almacenNotas";
+import { useTotales } from "../hooks/useTotales";
+import { Estadistica } from "./Estadistica"
+
 export const PaginaEstadisticas = () => {
+    const [notas, setNotas] = useState([]);
+    useEffect(() => {
+        const suscripcion = almacenNotas.suscribirse(notas => setNotas(notas));
+        return () => almacenNotas.desuscribirse(suscripcion);
+    }, []);
+    const totales = useTotales(notas);
     return (
         <>
             <main className="container">
@@ -10,28 +21,16 @@ export const PaginaEstadisticas = () => {
                             </div>
                             <div className="card-body row">
                                 <div className="col">
-                                    <div className="card">
-                                        <div className="card-header">Nota media</div>
-                                        <div className="card-body numbers">4.5</div>
-                                    </div>
+                                    <Estadistica titulo="Nota media" dato={totales.media} truncado conIcono />
                                 </div>
                                 <div className="col">
-                                    <div className="card">
-                                        <div className="card-header">Máxima nota</div>
-                                        <div className="card-body numbers">4.5</div>
-                                    </div>
+                                    <Estadistica titulo="Maxima nota" dato={totales.maxima} conIcono />
                                 </div>
                                 <div className="col">
-                                    <div className="card">
-                                        <div className="card-header">Aprobados</div>
-                                        <div className="card-body numbers">4 (30%)</div>
-                                    </div>
+                                    <Estadistica titulo="Aprobados" dato={totales.nAprobados} porcentaje={totales.pAprobados} />
                                 </div>
                                 <div className="col">
-                                    <div className="card">
-                                        <div className="card-header">Suspensos</div>
-                                        <div className="card-body numbers">4 (30%)</div>
-                                    </div>
+                                    <Estadistica titulo="Suspensos" dato={totales.nSuspensos} porcentaje={totales.pSuspensos} />
                                 </div>
                             </div>
                         </div>

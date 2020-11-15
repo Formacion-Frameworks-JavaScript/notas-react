@@ -13,6 +13,11 @@ const loadNotas = () => {
 const suscribirse = cb => {
     suscripciones.push(cb);
     cb(notas);
+    return cb;
+}
+
+const desuscribirse = cb => {
+    suscripciones = suscripciones.filter(f => f !== cb);
 }
 
 const borraNota = nota => {
@@ -45,6 +50,7 @@ loadNotas();
 export default {
     notas,
     suscribirse,
+    desuscribirse,
     borraNota,
     modificaNota,
     creaNota

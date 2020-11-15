@@ -13,7 +13,8 @@ export const Aula = props => {
     } = props;
     const [notas, setNotas] = useState([]);
     useEffect(() => {
-        almacenNotas.suscribirse(notas => setNotas(notas.filter(nota => nota.aula === letra)));
+        const suscripcion = almacenNotas.suscribirse(notas => setNotas(notas.filter(nota => nota.aula === letra)));
+        return () => almacenNotas.desuscribirse(suscripcion);
     }, [letra]);
     return (
         <div className="col">
