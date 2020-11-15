@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
 import { Aula } from "./componentes/Aula";
 import { Navegacion } from "./componentes/Navegacion";
+import { NotFound } from "./componentes/NotFound";
 import { NuevaNota } from "./componentes/NuevaNota";
+import { PaginaEstadisticas } from "./componentes/PaginaEstadisticas";
+import { PaginaNotas } from "./componentes/PaginaNotas";
 import notasJSON from "./datos/notas.json";
 
 const { Loading } = require("./componentes/Loading");
@@ -23,28 +27,20 @@ function App() {
   return (
     <>
       <Navegacion />
-      <main className="container">
-        <div className="row form-nueva">
-          <div className="col-12 col-lg-8 offset-lg-2">
-            {muestraFormulario && <NuevaNota aula={muestraFormulario} onCierraFormulario={cierraFormulario} />}
-          </div>
-        </div>
-        <div className="row">
-          {
-            letrasAulas.map(letraAula =>
-              <Aula
-                letra={letraAula}
-                key={letraAula}
-                muestraFormulario={muestraFormulario}
-                onAbreFormulario={abreFormulario}
-              />
-            )
-          }
-        </div>
-      </main>
-      {
-        cargando && <Loading />
-      }
+      <Switch>
+        <Route path="/notas">
+          <PaginaNotas />
+        </Route>
+        <Route path="/estadisticas">
+          <PaginaEstadisticas />
+        </Route>
+        <Route path="/" exact>
+          <Redirect to="/notas" />
+        </Route>
+        <Route>
+          <NotFound />
+        </Route>
+      </Switch>
     </>
   );
 }

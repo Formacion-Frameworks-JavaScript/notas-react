@@ -1,3 +1,5 @@
+import { Link, NavLink } from "react-router-dom"
+
 export const Navegacion = props => {
     return (
         <header className="navbar navbar-default">
@@ -7,8 +9,12 @@ export const Navegacion = props => {
                 </div>
                 <nav className="nav navbar-nav navbar-right menu">
                     <ul className="list-unstyled list-inline">
-                        <li className="list-inline-item"><a href="#" className="activo">Listado de notas</a></li>
-                        <li className="list-inline-item"><a href="#">Estadísticas</a></li>
+                        <li className="list-inline-item">
+                            <NavLink to="/notas" activeClassName="activo">Listado de notas</NavLink>
+                        </li>
+                        <li className="list-inline-item">
+                            <NavLink to="/estadisticas" activeClassName="activo">Estadísticas</NavLink>
+                        </li>
                     </ul>
                 </nav>
             </div>
