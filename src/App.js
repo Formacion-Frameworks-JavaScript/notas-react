@@ -35,6 +35,7 @@ function App() {
               <Aula
                 letra={letraAula}
                 key={letraAula}
+                notas={notas.filter(nota => nota.aula === letraAula)}
                 muestraFormulario={muestraFormulario}
                 onAbreFormulario={abreFormulario}
               />

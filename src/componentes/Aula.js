@@ -1,10 +1,10 @@
 export const Aula = props => {
-    const { letra, muestraFormulario, onAbreFormulario } = props;
+    const { letra, notas, muestraFormulario, onAbreFormulario } = props;
     return (
         <div className="col">
             <div className="card">
                 <div className="header row">
-                    <h2 className="col-10">Aula {letra} <span>(2 alumnos)</span></h2>
+                    <h2 className="col-10">Aula {letra} <span>({notas.length} alumnos)</span></h2>
                     {
                         !muestraFormulario &&
                         <div className="col-2 anyadir">
@@ -25,26 +25,20 @@ export const Aula = props => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr className="table-danger">
-                                <td>Mario</td>
-                                <td>González</td>
-                                <td className="text-center">4</td>
-                                <td>
-                                    <a href="#" className="borrar">
-                                        <i className="fa fa-times-circle"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr className="table-success">
-                                <td>Juan</td>
-                                <td>González</td>
-                                <td className="text-center">8</td>
-                                <td>
-                                    <a href="#" className="borrar">
-                                        <i className="fa fa-times-circle"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                            {
+                                notas.map(alumno =>
+                                    <tr className={alumno.nota >= 5 ? "table-success" : "table-danger"}>
+                                        <td>{alumno.nombre}</td>
+                                        <td>{alumno.apellido}</td>
+                                        <td className="text-center">{alumno.nota}</td>
+                                        <td>
+                                            <a href="#" className="borrar">
+                                                <i className="fa fa-times-circle"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                )
+                            }
                         </tbody>
                     </table>
                 </div>
