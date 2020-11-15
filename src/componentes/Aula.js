@@ -3,7 +3,7 @@ export const Aula = props => {
         <div className="col">
             <div className="card">
                 <div className="header row">
-                    <h2 className="col-10">Aula A <span>(2 alumnos)</span></h2>
+                    <h2 className="col-10">Aula {props.letra} <span>(2 alumnos)</span></h2>
                     <div className="col-2 anyadir">
                         <a href="#">
                             <i className="fa fa-plus-circle"></i>

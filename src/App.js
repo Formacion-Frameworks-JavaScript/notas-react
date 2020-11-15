@@ -7,6 +7,7 @@ const { Loading } = require("./componentes/Loading");
 function App() {
   const cargando = false;
   const muestraFormulario = false;
+  const letrasAulas = ["A", "B", "C"];
   return (
     <>
       <Navegacion />
@@ -17,9 +18,9 @@ function App() {
           </div>
         </div>
         <div className="row">
-          <Aula />
-          <Aula />
-          <Aula />
+          <Aula letra={letrasAulas[0]} />
+          <Aula letra={letrasAulas[1]} />
+          <Aula letra={letrasAulas[2]} />
         </div>
       </main>
       {
