@@ -1,24 +1,14 @@
+import { Navegacion } from "./componentes/Navegacion";
+
 const { Loading } = require("./componentes/Loading");
 
 function App() {
   const cargando = false;
   return (
     <>
-      <header className="navbar navbar-default">
-        <div className="container-fluid">
-          <div className="navbar-header">
-            <h1 className="navbar-brand">Notas App</h1>
-          </div>
-          <nav className="nav navbar-nav navbar-right menu">
-            <ul className="list-unstyled list-inline">
-              <li className="list-inline-item"><a href="#" className="activo">Listado de notas</a></li>
-              <li className="list-inline-item"><a href="#">Estadísticas</a></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+      <Navegacion />
       <main className="container">
-        <div className="row form-nueva" hidden>
+        <div className="row form-nueva">
           <div className="col-12 col-lg-8 offset-lg-2">
             <div className="card">
               <div className="card-header">
