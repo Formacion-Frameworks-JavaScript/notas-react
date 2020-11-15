@@ -1,4 +1,5 @@
 import { Nota } from "./Nota";
+import { Totales } from "./Totales";
 
 export const Aula = props => {
     const {
@@ -45,38 +46,7 @@ export const Aula = props => {
                         </tbody>
                     </table>
                 </div>
-                <div className="card-footer totales">
-                    <div className="row">
-                        <div className="col">
-                            <div className="card">
-                                <div className="card-header">Nota media</div>
-                                <div className="card-body numbers">4.5</div>
-                                <i className="fa fa-smile icono-status icono-ok"></i>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card">
-                                <div className="card-header">Máxima nota</div>
-                                <div className="card-body numbers">4.5</div>
-                                <i className="fa fa-frown icono-status icono-no-ok"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <div className="card">
-                                <div className="card-header">Aprobados</div>
-                                <div className="card-body numbers">40 (100%)</div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card">
-                                <div className="card-header">Suspensos</div>
-                                <div className="card-body numbers">4 (30%)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Totales notas={notas} />
             </div>
         </div>
     )
