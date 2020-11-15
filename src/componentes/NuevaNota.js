@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import almacenNotas from "../datos/almacenNotas";
 
 export const NuevaNota = props => {
-    const { aula, onCierraFormulario, onCreaNota } = props;
+    const { aula, onCierraFormulario } = props;
     const [valido, setValido] = useState(false);
     const notaVacia = {
         nombre: "",
@@ -12,7 +13,7 @@ export const NuevaNota = props => {
     const [nuevaNota, setNuevaNota] = useState(notaVacia);
     const enviaForm = e => {
         e.preventDefault();
-        onCreaNota({ ...nuevaNota, nota: +nuevaNota.nota });
+        almacenNotas.creaNota({ ...nuevaNota, nota: +nuevaNota.nota });
         setNuevaNota(notaVacia);
         onCierraFormulario();
     }

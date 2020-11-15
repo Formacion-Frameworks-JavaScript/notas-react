@@ -1,7 +1,8 @@
 import { useState } from "react";
+import almacenNotas from "../datos/almacenNotas";
 
 export const Nota = props => {
-    const { alumno, onBorraNota, onModificaNota } = props;
+    const { alumno } = props;
     const [editando, setEditando] = useState(false);
     const [nuevaNota, setNuevaNota] = useState(alumno.nota);
     const resetEdit = () => {
@@ -10,7 +11,7 @@ export const Nota = props => {
     }
     const saveEdit = () => {
         setEditando(false);
-        onModificaNota(alumno.id, +nuevaNota);
+        almacenNotas.modificaNota(alumno.id, +nuevaNota);
     }
     return (
         <tr className={alumno.nota >= 5 ? "table-success" : "table-danger"}>
@@ -28,7 +29,7 @@ export const Nota = props => {
                 }
             </td>
             <td>
-                <a href="#" className="borrar" onClick={e => { e.preventDefault(); onBorraNota(alumno) }}>
+                <a href="#" className="borrar" onClick={e => { e.preventDefault(); almacenNotas.borraNota(alumno) }}>
                     <i className="fa fa-times-circle"></i>
                 </a>
             </td>

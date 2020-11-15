@@ -13,25 +13,6 @@ function App() {
   const [letrasAulas, setLetrasAulas] = useState([]);
   const cierraFormulario = () => setMuestraFormulario("");
   const abreFormulario = aula => setMuestraFormulario(aula);
-  const borraNota = nota => {
-    setNotas(notas.filter(n => n !== nota));
-  }
-  const modificaNota = (id, nota) => {
-    setNotas(notas.map(n => {
-      if (n.id === id) {
-        return {
-          ...n,
-          nota
-        }
-      } else {
-        return n;
-      }
-    }))
-  }
-  const creaNota = nota => {
-    nota.id = notas[notas.length - 1].id + 1;
-    setNotas([...notas, nota]);
-  }
   useEffect(() => {
     setLetrasAulas(
       notas
@@ -45,7 +26,7 @@ function App() {
       <main className="container">
         <div className="row form-nueva">
           <div className="col-12 col-lg-8 offset-lg-2">
-            {muestraFormulario && <NuevaNota aula={muestraFormulario} onCierraFormulario={cierraFormulario} onCreaNota={creaNota} />}
+            {muestraFormulario && <NuevaNota aula={muestraFormulario} onCierraFormulario={cierraFormulario} />}
           </div>
         </div>
         <div className="row">
@@ -54,11 +35,8 @@ function App() {
               <Aula
                 letra={letraAula}
                 key={letraAula}
-                notas={notas.filter(nota => nota.aula === letraAula)}
                 muestraFormulario={muestraFormulario}
                 onAbreFormulario={abreFormulario}
-                onBorraNota={borraNota}
-                onModificaNota={modificaNota}
               />
             )
           }

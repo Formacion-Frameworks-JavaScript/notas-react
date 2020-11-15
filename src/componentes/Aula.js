@@ -1,15 +1,20 @@
+import { useEffect, useState } from "react";
+import almacenNotas from "../datos/almacenNotas";
 import { Nota } from "./Nota";
 import { Totales } from "./Totales";
 
 export const Aula = props => {
     const {
         letra,
-        notas,
         muestraFormulario,
         onAbreFormulario,
         onBorraNota,
         onModificaNota
     } = props;
+    const [notas, setNotas] = useState([]);
+    useEffect(() => {
+        almacenNotas.suscribirse(notas => setNotas(notas.filter(nota => nota.aula === letra)));
+    }, [letra]);
     return (
         <div className="col">
             <div className="card">
