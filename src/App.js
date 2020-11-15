@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Aula } from "./componentes/Aula";
 import { Navegacion } from "./componentes/Navegacion";
 import { NuevaNota } from "./componentes/NuevaNota";
@@ -5,8 +6,8 @@ import { NuevaNota } from "./componentes/NuevaNota";
 const { Loading } = require("./componentes/Loading");
 
 function App() {
-  const cargando = false;
-  const muestraFormulario = false;
+  const [cargando, setCargando] = useState(false);
+  const [muestraFormulario, setMuestraFormulario] = useState(false);
   const letrasAulas = ["A", "B", "C"];
   return (
     <>
