@@ -28,6 +28,10 @@ function App() {
       }
     }))
   }
+  const creaNota = nota => {
+    nota.id = notas[notas.length - 1].id + 1;
+    setNotas([...notas, nota]);
+  }
   useEffect(() => {
     setLetrasAulas(
       notas
@@ -41,7 +45,7 @@ function App() {
       <main className="container">
         <div className="row form-nueva">
           <div className="col-12 col-lg-8 offset-lg-2">
-            {muestraFormulario && <NuevaNota aula={muestraFormulario} onCierraFormulario={cierraFormulario} />}
+            {muestraFormulario && <NuevaNota aula={muestraFormulario} onCierraFormulario={cierraFormulario} onCreaNota={creaNota} />}
           </div>
         </div>
         <div className="row">
