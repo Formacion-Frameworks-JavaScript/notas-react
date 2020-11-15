@@ -1,9 +1,10 @@
 export const NuevaNota = props => {
+    const { aula, onCierraFormulario } = props;
     return (
         <div className="card">
             <div className="card-header">
-                <span>Nueva nota aula A</span>
-                <i className="fa fa-minus-circle"></i>
+                <span>Nueva nota aula {aula}</span>
+                <i onClick={onCierraFormulario} className="fa fa-minus-circle"></i>
             </div>
             <form className="card-body">
                 <div className="form-group">

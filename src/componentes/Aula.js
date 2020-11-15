@@ -1,14 +1,18 @@
 export const Aula = props => {
+    const { letra, muestraFormulario, onAbreFormulario } = props;
     return (
         <div className="col">
             <div className="card">
                 <div className="header row">
-                    <h2 className="col-10">Aula {props.letra} <span>(2 alumnos)</span></h2>
-                    <div className="col-2 anyadir">
-                        <a href="#">
-                            <i className="fa fa-plus-circle"></i>
-                        </a>
-                    </div>
+                    <h2 className="col-10">Aula {letra} <span>(2 alumnos)</span></h2>
+                    {
+                        !muestraFormulario &&
+                        <div className="col-2 anyadir">
+                            <a href="#">
+                                <i onClick={() => onAbreFormulario(letra)} className="fa fa-plus-circle"></i>
+                            </a>
+                        </div>
+                    }
                 </div>
                 <div className="card-body">
                     <table className="table table-bordered tabla-alumnos">
