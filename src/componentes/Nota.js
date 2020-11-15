@@ -1,5 +1,5 @@
 export const Nota = props => {
-    const { alumno } = props;
+    const { alumno, onBorraNota } = props;
     return (
         <tr className={alumno.nota >= 5 ? "table-success" : "table-danger"}>
             <td>{alumno.nombre}</td>
@@ -13,7 +13,7 @@ export const Nota = props => {
                 </div>
             </td>
             <td>
-                <a href="#" className="borrar">
+                <a href="#" className="borrar" onClick={e => { e.preventDefault(); onBorraNota(alumno) }}>
                     <i className="fa fa-times-circle"></i>
                 </a>
             </td>

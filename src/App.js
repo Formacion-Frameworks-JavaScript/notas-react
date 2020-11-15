@@ -13,6 +13,9 @@ function App() {
   const [letrasAulas, setLetrasAulas] = useState([]);
   const cierraFormulario = () => setMuestraFormulario("");
   const abreFormulario = aula => setMuestraFormulario(aula);
+  const borraNota = nota => {
+    setNotas(notas.filter(n => n !== nota));
+  }
   useEffect(() => {
     setLetrasAulas(
       notas
@@ -38,6 +41,7 @@ function App() {
                 notas={notas.filter(nota => nota.aula === letraAula)}
                 muestraFormulario={muestraFormulario}
                 onAbreFormulario={abreFormulario}
+                onBorraNota={borraNota}
               />
             )
           }

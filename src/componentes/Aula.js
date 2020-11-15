@@ -1,7 +1,13 @@
 import { Nota } from "./Nota";
 
 export const Aula = props => {
-    const { letra, notas, muestraFormulario, onAbreFormulario } = props;
+    const {
+        letra,
+        notas,
+        muestraFormulario,
+        onAbreFormulario,
+        onBorraNota
+    } = props;
     return (
         <div className="col">
             <div className="card">
@@ -29,7 +35,11 @@ export const Aula = props => {
                         <tbody>
                             {
                                 notas.map(alumno =>
-                                    <Nota key={alumno.id} alumno={alumno} />
+                                    <Nota
+                                        key={alumno.id}
+                                        alumno={alumno}
+                                        onBorraNota={onBorraNota}
+                                    />
                                 )
                             }
                         </tbody>
