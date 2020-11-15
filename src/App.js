@@ -1,14 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Aula } from "./componentes/Aula";
 import { Navegacion } from "./componentes/Navegacion";
 import { NuevaNota } from "./componentes/NuevaNota";
+import notasJSON from "./datos/notas.json";
 
 const { Loading } = require("./componentes/Loading");
 
 function App() {
   const [cargando, setCargando] = useState(false);
   const [muestraFormulario, setMuestraFormulario] = useState(false);
-  const letrasAulas = ["A", "B", "C"];
+  const [notas, setNotas] = useState(notasJSON.notas);
+  const [letrasAulas, setLetrasAulas] = useState([]);
+  useEffect(() => {
+    setLetrasAulas(
+      notas
+        .map(nota => nota.aula)
+        .filter((letra, i, arr) => arr.indexOf(letra) === i)
+    )
+  }, [notas]);
   return (
     <>
       <Navegacion />
